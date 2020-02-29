@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './App.css';
+import {Card} from "react-bootstrap";
 
 export default class App extends Component {
 
@@ -54,32 +55,20 @@ export default class App extends Component {
             return <div>Loading...</div>;
         } else {
             return (
-                <ul>
-                    {items.map(item => (
-                        <li key={item.name}>
-                            {item.short} | {item.name} | {item.nativeName}
-                        </li>
-                    ))}
-                </ul>
+                <div className="container mt-5">
+                    <ul className="tile is-ancestor is-parent is-horizontal flex-wrap">
+                        {items.map(item => (
+                            <Card className="tile is-child is-3 box border-white" key={item.short}>
+                                <p className="title">{item.name}</p>
+                                <p className="subtitle">{item.short}</p>
+                                <div className="content">
+                                    <p>{item.nativeName}</p>
+                                </div>
+                            </Card>
+                        ))}
+                    </ul>
+                </div>
             );
         }
-
-        // return (
-        //     <div className="App">
-        //         <header className="App-header">
-        //             <p>
-        //                 Edit <code>src/App.js</code> and save to reload.
-        //             </p>
-        //             <a
-        //                 className="App-link"
-        //                 href="https://reactjs.org"
-        //                 target="_blank"
-        //                 rel="noopener noreferrer"
-        //             >
-        //                 Learn React
-        //             </a>
-        //         </header>
-        //     </div>
-        // );
     }
-}
+};
